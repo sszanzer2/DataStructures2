@@ -13,6 +13,7 @@ public class MergeSort<T extends Comparable<T>> {
         this.SIZE = arr.length; 
     }
 
+    //method to print out the elements
     public void printArray() {
         for (T element : arr) {
             System.out.println(element + " ");
@@ -27,9 +28,11 @@ public class MergeSort<T extends Comparable<T>> {
 					+ "then splitting the \nright half of the list until each list is an element of 1, and finally sorting and "
 					+ "merging the lists together.");
 			int midPoint = (lastIndex + firstIndex) /2;
-					
+			//Finding the midpoint by first splitting the left half of the list until each list is an element of 1		
 			mergeSortSplit(firstIndex, midPoint);
+			//Splitting the right half of the list until each list is an element of 1
 			mergeSortSplit(midPoint+1, lastIndex);
+			//Sorting and merging the lists together.
 			mergeTogether(firstIndex, midPoint, midPoint+1, lastIndex);
 		}
 	}
