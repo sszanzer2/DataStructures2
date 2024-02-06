@@ -11,21 +11,22 @@ public class QuickSort<T extends Comparable<T>> {
 		System.out.println("\nUsing the last element in the array as the pivot to partition the array");
 		T pivot = arr[high];
 		System.out.println("Declaring i which is a pointer that starts one position before the low index,"
-				+ " we use it to keep track of the last position where we found an element less than the pivot");
+				+ " \nwe use it to keep track of the last position where we found an element less than the pivot");
 		int i = low-1;
 		System.out.println("J is a pointer that traverses the array from the low index to one position before the high index, "
-				+ "it is used to compare each element with the pivot");
+				+ "\nit is used to compare each element with the pivot");
 
 		for(int j=low; j< high;j++) {
 			System.out.println("Checking if the current element is less than the pivot");
 			if(arr[j].compareTo(pivot)<=0) {
-				System.out.println("If it is, increment i and swap the elements at positions i and j, "
+				System.out.println("It is, so we increment i and swap the elements at positions i and j, "
 						+ "this ensures that all elements less than the pivot are on the left side");
 
 				i++;
 				swap(arr, i, j);
+			}else {
+				System.out.println("Current element is not less than pivot, no swap");
 			}
-			System.out.println("Current element is not less than pivot, no swap");
 		}
 		System.out.println("After the loop, swap the pivot with the element at position i + 1, this places the pivot at its correct "
 				+ "position in the sorted array");
