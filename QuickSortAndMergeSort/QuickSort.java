@@ -2,13 +2,16 @@ package SortingHW;
 
 public class QuickSort<T extends Comparable<T>> {
 	public void swap(T[] arr, int i, int j) {
+		//storing the current value in temp
 		T temp = arr[i];
+		//swapping the values
 		arr[i]=arr[j];
 		arr[j]=temp;	
 	}
 	
 	public int partition(T[] arr, int low, int high) {
 		System.out.println("\nUsing the last element in the array as the pivot to partition the array");
+		//getting the last element to use as the pivot
 		T pivot = arr[high];
 		System.out.println("Declaring i which is a pointer that starts one position before the low index,"
 				+ " \nwe use it to keep track of the last position where we found an element less than the pivot");
@@ -21,7 +24,6 @@ public class QuickSort<T extends Comparable<T>> {
 			if(arr[j].compareTo(pivot)<=0) {
 				System.out.println("It is, so we increment i and swap the elements at positions i and j, "
 						+ "this ensures that all elements less than the pivot are on the left side");
-
 				i++;
 				swap(arr, i, j);
 			}else {
@@ -40,7 +42,9 @@ public class QuickSort<T extends Comparable<T>> {
 	
 	public void quickSort(T[] arr, int low, int high) {
 		if(low < high) {
+			//getting the pivot
 			int pivot= partition(arr, low, high);
+			//performing the quick sort
 			quickSort(arr, low, pivot-1);
 			quickSort(arr, pivot+1, high);
 		}
