@@ -16,7 +16,7 @@ public class Student implements Comparable<Student>{
 	public int getGrade() {
 		return grade;
 	}
-	
+	//implementing the compareTo method to compare the grades
 	@Override
     public int compareTo(Student other) {
         return Integer.compare(this.grade, other.grade);
