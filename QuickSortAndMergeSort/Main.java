@@ -6,7 +6,9 @@ public class Main {
 	public static <T> void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int answer;
+		 //handling invalid input
 		 while (true) {
+			 	//offering if the user would like to generate a list automatically or input their own
 	            System.out.println("Would you like to see the results automatically or input your own names?"
 	                    + "\nFor automatic enter 1, For entering your own names enter 2: ");
 	            
@@ -31,6 +33,7 @@ public class Main {
 	        }
 	}
 	
+	//includes a pre-made list that is passed in to get sorted
 	public static void automaticResults() {
 	    Student[] students = {
 	        new Student("Shana", 85),
@@ -41,10 +44,13 @@ public class Main {
 	        new Student("Fraidy", 88)
 	    };
 
+	    //finds hows many elements are in the list
 	    int high = students.length;
 
 	    QuickSort<Student> qs = new QuickSort<>();
+	    //calls the quick sort method to sort the array passing in the array the first index and the last
 	    qs.quickSort(students, 0, high - 1);
+	    //printing out the sorted list
 	    System.out.println("Quick sort: ");
 	    for (int i = 0; i < high; i++)
 	        System.out.println(students[i]);
@@ -52,17 +58,20 @@ public class Main {
 	    MergeSort<Student> ms = new MergeSort<>(students);
 
 	    System.out.println();
+	    //calls the merge sort split method to start the merger sort process passing in the first index and the last
 	    ms.mergeSortSplit(0, high - 1);
+	    //printing out the sorted list
 	    System.out.println("Merge sort: ");
 	    ms.printArray();
 	}
 
 	
 	public static void yourResults(Scanner scanner) {
+		//asking how many to determine the length of the array
 		System.out.println("How many student names would you like to enter? ");
 		int nameAmount = 0;
 
-		// Validate input until a valid number is provided
+		// Validating input until a valid number is provided
 		while (true) {
 		    if (scanner.hasNextInt()) {
 		        nameAmount = scanner.nextInt();
@@ -83,11 +92,12 @@ public class Main {
 		Student[] students = new Student[nameAmount];
 		int high = students.length;
 
+		//for loop to add in the users student names and grades
 		for (int i = 0; i < nameAmount; i++) {
 		    System.out.println("Enter the name of student " + (i + 1) + ": ");
 		    String name = scanner.nextLine();
 
-		    int grade = 0;
+		    int grade;
 
 		    // Validate input until a valid grade is provided
 		    while (true) {
@@ -115,14 +125,17 @@ public class Main {
 
 	    QuickSort<Student> qs = new QuickSort<>();
 	    MergeSort<Student> ms = new MergeSort<>(students);
-
+	    //calls the quick sort method to sort the array passing in the array the first index and the last
 	    qs.quickSort(students, 0, high - 1);
+	    //printing out the sorted list
 	    System.out.println("Quick sort: ");
 	    for (int i = 0; i < high; i++)
 	        System.out.println(students[i]);
 
 	    System.out.println();
+	    //calls the merge sort split method to start the merger sort process passing in the first index and the last
 	    ms.mergeSortSplit(0, high - 1);
+	    //printing out the sorted list
 	    System.out.println("Merge sort: ");
 	    ms.printArray();
 	}
