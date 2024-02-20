@@ -181,7 +181,7 @@ public class HashTable<K, V> implements Iterable<LinkedHashEntry<K, V>> {
 
 
     // Naive hash function
-    private int naiveHash(String key) {
+    protected int naiveHash(String key) {
         int hash = 1;
         for (int i = 0; i < key.length(); i++) {
             hash += key.charAt(i);
@@ -190,7 +190,7 @@ public class HashTable<K, V> implements Iterable<LinkedHashEntry<K, V>> {
     }
 
     // Sophisticated hash function
-    private int sophisticatedHash(String key) { 
+    protected int sophisticatedHash(String key) { 
         // Ensure the key is not null
         if (key == null) {
             throw new IllegalArgumentException("Key cannot be null.");
