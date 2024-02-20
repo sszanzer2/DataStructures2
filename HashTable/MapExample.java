@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-//add comments and fix tests
+//I was told I did not need to have prints statements dictating the events that are occuring
 
 public class MapExample {
     public static void main(String[] args) {
