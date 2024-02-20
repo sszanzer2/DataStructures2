@@ -77,7 +77,7 @@ public class MapExample {
                     break;
                 case 2:
                     // View words in descending order of occurrence
-                    viewWordsDescendingOrder(hashTable);
+                    viewWordsDescendingOrder(hashTable, hashFunction);
                     break;
                 case 3:
                     // View report on internal structure of the hash table
@@ -136,7 +136,8 @@ public class MapExample {
         }
     }
 
-    private static void viewWordsDescendingOrder(HashTable<String, Integer> hashTable) {
+    // View words in descending order of occurrence
+    private static void viewWordsDescendingOrder(HashTable<String, Integer> hashTable, HashFunction hashFunction) {
         // Create a TreeMap to sort words by their counts
         TreeMap<Integer, String> sortedWords = new TreeMap<>();
 
@@ -150,7 +151,31 @@ public class MapExample {
         // Print words in descending order of occurrence
         System.out.println("\nWords in descending order of occurrence:");
         for (int count : sortedWords.descendingKeySet()) {
-            System.out.println(sortedWords.get(count) + ": " + count);
+            String word = sortedWords.get(count);
+            int listLength = getLinkedListLength(hashTable, word, hashFunction); // Get the length of the linked list
+            System.out.println(word + ": " + count + " (List Length: " + listLength + ")");
         }
     }
+
+    // Helper method to get the length of the linked list for a particular word
+    private static <K, V> int getLinkedListLength(HashTable<K, V> hashTable, K key, HashFunction hashFunction) {
+        int hash;
+        if (hashFunction == HashFunction.NAIVE) {
+            hash = hashTable.naiveHash(key.toString());
+        } else {
+            hash = hashTable.sophisticatedHash(key.toString());
+        }
+        int length = 0;
+        int position = 0;
+        // Iterate over all entries in the bucket corresponding to the hash value
+        for (LinkedHashEntry<K, V> entry = hashTable.getEntry(hash); entry != null; entry = entry.next) {
+            position++;
+            if (entry.key.equals(key)) {
+                length = position;
+                break; // Exit the loop once the word is found
+            }
+        }
+        return length;
+    }
+
 }
