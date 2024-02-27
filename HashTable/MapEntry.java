@@ -4,11 +4,13 @@ public class MapEntry<K, V> {
     // Instance variables to store key and value
     protected K key;
     protected V value;
+    private MapEntry<K,V> next;
 
     // Constructor to initialize key and value
     MapEntry(K k, V v) {
         key = k;
         value = v;
+        next=null;
     }
 
     // Getter method to retrieve the key
