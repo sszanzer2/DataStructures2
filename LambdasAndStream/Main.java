@@ -28,25 +28,31 @@ public class Main {
 		System.out.println();
 		
 		//Print in sorted order how long each family has been a member of your schul 
+		System.out.println("Length of memebership for each family: ");
 	    members.stream().sorted(Comparator.comparingInt(SchulMember::getYearsOfMembership))
 	           .forEach(entry -> System.out.println("Family: " + entry.getLastNameOfMember() + ", Years of Membership: " + entry.getYearsOfMembership()));
 		System.out.println();
 		
 	    //Print out from oldest to youngest the ages of your members (not spouses) 
-		members.stream().sorted(Comparator.comparing(SchulMember:: getBirthDateOfMember))
+		System.out.println("Ages of members from oldest to yougest: ");
+		members.stream().sorted(Comparator.comparing(SchulMember:: getBirthDateOfMember).reversed())
 					.forEach(entry ->System.out.println("Family: " + entry.getLastNameOfMember() + ", Age: " + entry.getBirthDateOfMember())); 
 		System.out.println();
 		
 		//Sort the names of the spouses of all members 
+		System.out.println("Names of members' spouses: ");
 	    members.stream().sorted(Comparator.comparing(SchulMember:: getSpouseFirstName))
 	    .forEach(entry -> System.out.println("Spouses of schul members: " + entry.getSpouseFirstName()));
 	    System.out.println();
 	    
 	    //print out all families who have more than 3 children 
+	    System.out.println("Families with more than 3 children: ");
 	    members.stream().filter(member -> member.getChildrenNames().length > 3)
 	    .forEach(entry -> System.out.println("Families with more than 3 kids: " + entry.getLastNameOfMember()));
+	    System.out.println();
 	    
-	    // print out the names of all children whose name is larger (alphabetically) than the letter “c” (and what family they belong to).    
+	    // print out the names of all children whose name is larger (alphabetically) than the letter “c” (and what family they belong to).
+	    System.out.println("All children who's names start from D an on: ");
         members.stream() .filter(member -> Arrays.stream(member.getChildrenNames())
         				.anyMatch(name -> name.compareToIgnoreCase("c") > 0))
 				        .forEach(member -> {System.out.println("\nFamily: " + member.getLastNameOfMember() + "\nChildren: ");
