@@ -1,6 +1,8 @@
 package HashMap;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.function.Function;
 
 public class HashTable<K, V> implements Iterable<LinkedHashEntry<K, V>>{
@@ -161,8 +163,7 @@ public class HashTable<K, V> implements Iterable<LinkedHashEntry<K, V>>{
         }
     }
 
-    //fix hashes too many collisions
-    Function<String, Integer> naiveHash = input -> {
+    /*Function<String, Integer> naiveHash = input -> {
         int hash = 1;
         for (int i = 0; i < input.length(); i++) {
             hash += input.charAt(i);
@@ -186,8 +187,9 @@ public class HashTable<K, V> implements Iterable<LinkedHashEntry<K, V>>{
         int compressedHash = Math.abs(multipliedSum) % TABLE_SIZE; // Ensure non-negative hash value
 
         return compressedHash; // Return the computed hash value
-    };
+    };*/
 
+   
 
 
     // Method to generate a report on the internal structure of the hash table
