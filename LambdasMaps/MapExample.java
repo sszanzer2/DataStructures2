@@ -111,7 +111,7 @@ public class MapExample {
             e.printStackTrace();
         }
     }
-
+//works?
     private static void viewWordsDescendingOrder(HashTable<String, Integer> hashTable,  Function<String, Integer> hashFunction) {
         TreeMap<Integer, String> sortedWords = new TreeMap<>();
         for (LinkedHashEntry<String, Integer> entry : hashTable) {
